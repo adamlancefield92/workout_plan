@@ -1,4 +1,4 @@
-# Home Split
+# Workout Plan
 
 A personal strength & power workout app (Legs / Push / Pull) with a built-in rest timer.
 Single static page — no build step, no dependencies.
