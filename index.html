@@ -384,21 +384,70 @@
   var body=document.getElementById('demoBody');
   var closeBtn=document.getElementById('demoClose');
 
-  function openModal(name,search){
+  var IMAGE_BASE='https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/';
+  var DATA_URL='https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/dist/exercises.json';
+  var cache=null;
+
+  /* ordered list of fallback search terms per button data-search */
+  var TERMS={
+    'jump squat':['jump squat','squat jump','squat'],
+    'bulgarian split squat':['bulgarian split squat','split squat'],
+    'romanian deadlift':['romanian deadlift','stiff leg deadlift'],
+    'single leg calf raise':['standing single-leg calf raise','calf raise'],
+    'wall sit':['wall squat'],
+    'push up':['plyometric push-up','push-up','push up'],
+    'dumbbell bench press':['dumbbell bench press','dumbbell floor press','bench press'],
+    'dumbbell shoulder press':['dumbbell shoulder press','shoulder press'],
+    'triceps overhead extension':['dumbbell one arm triceps extension','triceps extension overhead dumbbell','lying dumbbell tricep extension'],
+    'lateral raise':['dumbbell lateral raise','side lateral raise'],
+    'bent over row':['bent over two-dumbbell row','dumbbell bent over row','bent over row'],
+    'one arm dumbbell row':['one arm dumbbell row','one-arm dumbbell row'],
+    'lat pulldown':['cable lat pulldown','lat pulldown'],
+    'face pull':['cable face pull','face pull','band pull apart'],
+    'dumbbell curl':['dumbbell alternate bicep curl','dumbbell bicep curl','dumbbell curl']
+  };
+
+  function findEx(exercises, searchKey){
+    var terms=TERMS[searchKey]||[searchKey];
+    for(var t=0;t<terms.length;t++){
+      var term=terms[t].toLowerCase();
+      for(var i=0;i<exercises.length;i++){
+        if(exercises[i].name.toLowerCase().indexOf(term)!==-1) return exercises[i];
+      }
+    }
+    return null;
+  }
+
+  function showExercise(ex, name){
+    var imgs=(ex.images||[]).slice(0,2);
+    if(!imgs.length){
+      body.innerHTML='<div class="demo-msg">No images for this exercise.</div>';
+      return;
+    }
+    var html='<div style="display:flex;gap:8px">';
+    imgs.forEach(function(img){
+      html+='<img src="'+IMAGE_BASE+img+'" alt="'+name+'" class="demo-gif" style="flex:1;width:0">';
+    });
+    html+='</div><div style="font-size:11px;color:var(--muted);margin-top:8px;text-align:center">Start · End position</div>';
+    body.innerHTML=html;
+  }
+
+  function openModal(name, searchKey){
     titleEl.textContent=name;
     body.innerHTML='<div class="demo-msg">Loading…</div>';
     modal.classList.remove('hidden');
     document.body.style.overflow='hidden';
-    fetch('https://oss.exercisedb.dev/api/v1/exercises/name/'+encodeURIComponent(search)+'?limit=1')
+
+    var run=function(exercises){
+      var ex=findEx(exercises,searchKey);
+      if(ex) showExercise(ex,name);
+      else body.innerHTML='<div class="demo-msg">No demo found for this exercise.</div>';
+    };
+
+    if(cache){run(cache);return;}
+    fetch(DATA_URL)
       .then(function(r){return r.json();})
-      .then(function(data){
-        var ex=Array.isArray(data)?data[0]:data;
-        if(ex&&ex.gifUrl){
-          body.innerHTML='<img src="'+ex.gifUrl+'" alt="'+name+' demonstration" class="demo-gif">';
-        } else {
-          body.innerHTML='<div class="demo-msg">No demo found for this exercise.</div>';
-        }
-      })
+      .then(function(data){cache=data;run(data);})
       .catch(function(){
         body.innerHTML='<div class="demo-msg">Could not load demo — check your connection.</div>';
       });
