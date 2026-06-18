@@ -67,7 +67,10 @@
   .wt.bw{background:transparent;color:var(--muted);border:1px solid var(--line)}
   .cue{font-size:11.5px;color:var(--muted);margin-top:2px}
   .cue b{color:var(--ink);font-weight:600}
-  .how{font-size:11px;color:var(--muted);margin-top:4px;padding-top:4px;border-top:1px solid var(--line);line-height:1.5}
+  .how{font-size:11px;color:var(--muted);margin-top:4px;padding-top:4px;border-top:1px solid var(--line);line-height:1.5;display:none}
+  .how.open{display:block}
+  .how-btn{font-size:10px;color:var(--muted);background:transparent;border:1px solid var(--line);border-radius:999px;padding:1px 7px;cursor:pointer;font-family:"Inter",sans-serif;margin-left:4px;vertical-align:middle;line-height:1.6}
+  .how-btn.open{color:var(--ink);border-color:var(--muted)}
 
   .core{font-size:12.5px;color:var(--base);background:var(--rest);border:1px solid var(--rest);border-radius:10px;padding:8px 11px;margin-top:3px;font-weight:500}
   .core b{font-family:"Saira Condensed",sans-serif;color:var(--base);text-transform:uppercase;letter-spacing:.1em;font-size:11px;font-weight:700}
@@ -142,31 +145,31 @@
   <div class="warm"><b>Warm-up ·</b> 10 leg swings/leg · 15 slow squats · 10 walking lunges</div>
 
   <div class="ex"><div class="node">1</div><div>
-    <div class="head"><span class="name">Squat Jumps</span><span class="kit">or fast stand-ups</span></div>
+    <div class="head"><span class="name">Squat Jumps</span><span class="kit">or fast stand-ups</span><button class="how-btn">How?</button></div>
     <div class="row"><span class="reps">4 × 5</span><span class="rest" data-sec="90">rest 60–90s</span><span class="wt bw">Bodyweight</span></div>
     <div class="cue"><b>Power, done fresh:</b> explode up, soft landing, full reset each rep.</div>
     <div class="how">Feet shoulder-width. Squat to parallel, then drive explosively upward. Land softly with knees slightly bent and fully reset before the next rep.</div></div></div>
 
   <div class="ex"><div class="node">2</div><div>
-    <div class="head"><span class="name">Bulgarian Split Squats</span><span class="kit">rear foot raised</span></div>
+    <div class="head"><span class="name">Bulgarian Split Squats</span><span class="kit">rear foot raised</span><button class="how-btn">How?</button></div>
     <div class="row"><span class="reps">3 × 8 <small>/leg</small></span><span class="rest" data-sec="60">rest 60s</span><span class="wt">set 8–12kg</span></div>
     <div class="cue"><b>3-sec descent</b>, shin vertical, weight in front heel.</div>
     <div class="how">Rest your rear foot on a chair behind you, front foot about a stride ahead. Lower your back knee toward the floor, keeping your front shin vertical. Drive through your front heel to stand.</div></div></div>
 
   <div class="ex"><div class="node">3</div><div>
-    <div class="head"><span class="name">Romanian Deadlifts</span><span class="kit">dumbbells · heaviest</span></div>
+    <div class="head"><span class="name">Romanian Deadlifts</span><span class="kit">dumbbells · heaviest</span><button class="how-btn">How?</button></div>
     <div class="row"><span class="reps">3 × 10</span><span class="rest" data-sec="60">rest 60s</span><span class="wt">bump to 10–16kg</span></div>
     <div class="cue"><b>Hinge at hips</b>, push backside back, flat back. Only weight change of the day.</div>
     <div class="how">Hold DBs in front of your thighs. Push your hips back and hinge forward, lowering the DBs down your legs with a flat back — stop when you feel a hamstring stretch. Drive hips forward to stand, squeeze glutes at the top.</div></div></div>
 
   <div class="ex"><div class="node">4</div><div>
-    <div class="head"><span class="name">Single-Leg Calf Raises</span><span class="kit">off a step</span></div>
+    <div class="head"><span class="name">Single-Leg Calf Raises</span><span class="kit">off a step</span><button class="how-btn">How?</button></div>
     <div class="row"><span class="reps">2 × 12 <small>/leg</small></span><span class="rest" data-sec="45">rest 45s</span><span class="wt bw">BW or hold 1 DB</span></div>
     <div class="cue"><b>Full range</b>, hold wall for balance.</div>
     <div class="how">Stand on one foot on the edge of a step, heel hanging off. Lower your heel below the step, then rise up onto your tiptoe as high as possible. Touch the wall lightly for balance only.</div></div></div>
 
   <div class="ex"><div class="node">5</div><div>
-    <div class="head"><span class="name">Wall Sit</span><span class="kit">optional finisher</span></div>
+    <div class="head"><span class="name">Wall Sit</span><span class="kit">optional finisher</span><button class="how-btn">How?</button></div>
     <div class="row"><span class="reps">2 × 30–45<small>s</small></span><span class="wt bw">Bodyweight</span></div>
     <div class="cue">The only <b>burn</b> bit — keep it short.</div>
     <div class="how">Back flat against a wall, feet out in front. Slide down until thighs are parallel to the floor and knees are at 90°. Hold still — don't let the back peel off the wall.</div></div></div>
@@ -180,31 +183,31 @@
   <div class="warm"><b>Warm-up ·</b> arm circles · 15 band pull-aparts · 10 slow push-ups</div>
 
   <div class="ex"><div class="node">1</div><div>
-    <div class="head"><span class="name">Explosive Push-ups</span><span class="kit">push off the floor fast</span></div>
+    <div class="head"><span class="name">Explosive Push-ups</span><span class="kit">push off the floor fast</span><button class="how-btn">How?</button></div>
     <div class="row"><span class="reps">4 × 5</span><span class="rest" data-sec="90">rest 60–90s</span><span class="wt bw">Bodyweight</span></div>
     <div class="cue"><b>Power, done fresh:</b> drive up fast, control the way down. On knees if needed.</div>
     <div class="how">Standard push-up position, hands just wider than shoulders. Lower chest to the floor with control, then drive up as fast as possible. Let your hands leave the floor at the top. Fully reset between reps.</div></div></div>
 
   <div class="ex"><div class="node">2</div><div>
-    <div class="head"><span class="name">DB Floor / Bench Press</span><span class="kit">main lift · heaviest</span></div>
+    <div class="head"><span class="name">DB Floor / Bench Press</span><span class="kit">main lift · heaviest</span><button class="how-btn">How?</button></div>
     <div class="row"><span class="reps">3 × 8</span><span class="rest" data-sec="60">rest 60s</span><span class="wt">set 12–20kg</span></div>
     <div class="cue"><b>Control to chest</b>, drive up. Bench beats floor once you have one.</div>
     <div class="how">Lie on your back (on floor or bench), DBs at chest height with elbows at roughly 45°. Press up until arms are extended, then lower slowly back until DBs touch your chest.</div></div></div>
 
   <div class="ex"><div class="node">3</div><div>
-    <div class="head"><span class="name">DB Shoulder Press</span><span class="kit">standing or seated</span></div>
+    <div class="head"><span class="name">DB Shoulder Press</span><span class="kit">standing or seated</span><button class="how-btn">How?</button></div>
     <div class="row"><span class="reps">3 × 8</span><span class="rest" data-sec="60">rest 60s</span><span class="wt">dial to 8–14kg</span></div>
     <div class="cue">Press overhead, <b>ribs down</b>, don't arch the back.</div>
     <div class="how">Hold DBs at shoulder height, palms facing forward. Brace your core and press straight overhead until arms are extended. Lower back to shoulders with control — don't let your lower back arch.</div></div></div>
 
   <div class="ex"><div class="node">4</div><div>
-    <div class="head"><span class="name">Overhead Triceps Ext.</span><span class="kit">one DB, both hands</span></div>
+    <div class="head"><span class="name">Overhead Triceps Ext.</span><span class="kit">one DB, both hands</span><button class="how-btn">How?</button></div>
     <div class="row"><span class="reps">2 × 12</span><span class="rest" data-sec="45">rest 45s</span><span class="wt">4–10kg</span></div>
     <div class="cue"><b>Slow stretch</b> at the bottom, elbows pointing up.</div>
     <div class="how">Hold one DB with both hands, arms extended overhead. Bend only at the elbows to lower the DB behind your head, keeping elbows pointing straight up. Extend back to the top.</div></div></div>
 
   <div class="ex"><div class="node">5</div><div>
-    <div class="head"><span class="name">DB Lateral Raises</span><span class="kit">shoulder health · optional</span></div>
+    <div class="head"><span class="name">DB Lateral Raises</span><span class="kit">shoulder health · optional</span><button class="how-btn">How?</button></div>
     <div class="row"><span class="reps">2 × 15</span><span class="rest" data-sec="45">rest 45s</span><span class="wt">2–6kg light</span></div>
     <div class="cue"><b>Lead with elbows</b>, slow, no swinging. Lightest move — comes last.</div>
     <div class="how">Hold DBs at your sides with a slight bend in the elbows. Raise both arms out to the sides to shoulder height, leading with your elbows. Lower slowly — use a very light weight and avoid shrugging or swinging.</div></div></div>
@@ -218,44 +221,36 @@
   <div class="warm"><b>Warm-up ·</b> 15 band pull-aparts · arm swings · shoulder rolls</div>
 
   <div class="ex"><div class="node">1</div><div>
-    <div class="head"><span class="name">Fast Dumbbell Rows</span><span class="kit">bent over, both arms</span></div>
+    <div class="head"><span class="name">Fast Dumbbell Rows</span><span class="kit">bent over, both arms</span><button class="how-btn">How?</button></div>
     <div class="row"><span class="reps">4 × 5</span><span class="rest" data-sec="90">rest 60–90s</span><span class="wt">set 10–16kg</span></div>
     <div class="cue"><b>Power, done fresh:</b> pull fast to the ribs, control the lower.</div>
     <div class="how">Hinge forward at the hips, back flat and parallel to the floor, DBs hanging straight down. Pull both DBs up to your ribs as fast as possible, then lower with control. Keep your core braced throughout.</div></div></div>
 
   <div class="ex"><div class="node">2</div><div>
-    <div class="head"><span class="name">One-Arm DB Row</span><span class="kit">hand on chair · heaviest</span></div>
+    <div class="head"><span class="name">One-Arm DB Row</span><span class="kit">hand on chair · heaviest</span><button class="how-btn">How?</button></div>
     <div class="row"><span class="reps">3 × 8 <small>/arm</small></span><span class="rest" data-sec="60">rest 60s</span><span class="wt">bump to 14–24kg</span></div>
     <div class="cue">Main <b>horizontal pull</b> — your strongest. Pull to the hip, flat back. Then set the DBs down.</div>
     <div class="how">Place one hand and the same-side knee on a chair for support. Hold DB in the opposite hand, arm hanging down. Pull the DB up to your hip, keeping your back flat and elbow close to your body. Lower slowly.</div></div></div>
 
   <div class="ex"><div class="node">3</div><div>
-    <div class="head"><span class="name">Banded Lat Pulldown</span><span class="kit">band + door anchor, kneeling</span></div>
+    <div class="head"><span class="name">Banded Lat Pulldown</span><span class="kit">band + door anchor, kneeling</span><button class="how-btn">How?</button></div>
     <div class="row"><span class="reps">3 × 12</span><span class="rest" data-sec="60">rest 60s</span><span class="wt bw">Band</span></div>
     <div class="cue"><b>Vertical pull</b> — pull elbows down to your ribs, control the stretch up.</div>
     <div class="how">Anchor the band at the top of a door. Kneel facing the door and grip the band with both hands. Pull your elbows down and back toward your ribs, squeezing your lats at the bottom. Slowly let the band pull your arms back up.</div></div></div>
 
   <div class="ex"><div class="node">4</div><div>
-    <div class="head"><span class="name">Band Face Pulls</span><span class="kit">posture &amp; rear delts</span></div>
+    <div class="head"><span class="name">Band Face Pulls</span><span class="kit">posture &amp; rear delts</span><button class="how-btn">How?</button></div>
     <div class="row"><span class="reps">2 × 15</span><span class="rest" data-sec="45">rest 45s</span><span class="wt bw">Band</span></div>
     <div class="cue"><b>Pull to your face, elbows high.</b> The best move here for rounded shoulders.</div>
     <div class="how">Anchor band at face height. Grip with both hands, palms facing down. Pull toward your face with elbows flaring high and wide, finishing with hands beside your ears. Squeeze shoulder blades together at the end.</div></div></div>
 
   <div class="ex"><div class="node">5</div><div>
-    <div class="head"><span class="name">Dumbbell Curls</span><span class="kit">optional finisher</span></div>
+    <div class="head"><span class="name">Dumbbell Curls</span><span class="kit">optional finisher</span><button class="how-btn">How?</button></div>
     <div class="row"><span class="reps">2 × 12</span><span class="wt">4–10kg</span></div>
     <div class="cue">Slow, <b>no swinging</b> — keep the elbows still. Grab the DBs again only if you fancy it.</div>
     <div class="how">Hold DBs at your sides, palms facing forward. Curl both up by bending at the elbows, keeping your upper arms pinned to your sides. Lower slowly back to the start.</div></div></div>
 
   <div class="core"><b>Core finisher · optional ·</b> Bird-dog 2 × 8/side · Side plank 2 × 20s/side. Slow and controlled — this one's all posture.</div>
-</div>
-
-<div class="shared">
-  <div class="tip"><b>Built for fewer weight changes:</b> each day flows power → heaviest lift → lighter/band work, so the dumbbell only changes 2–3 times and never jumps back up. On pull day all the dumbbell work is done first, then you set them down for the bands.</div>
-  <div class="tip"><b>First 2–3 weeks:</b> 2 sets only, leave reps in the tank, don't hit failure. Build to full sets once soreness fades. Intensity (close-ish to failure) matters more than piling on sets.</div>
-  <div class="tip"><b>Picking a weight:</b> last 2 reps should be hard but your form holds. When the top of the rep range feels easy, slow the tempo &amp; add a pause before going heavier. (Weights shown are targets to grow into — start lighter.)</div>
-  <div class="tip"><b>Weekly shape:</b> Legs · Push · Pull · rest, once or twice through per week. Add <b>2–3 easy cardio sessions</b> — 30–40 min where you can talk but not sing — on off days. Optional extra: a minute of <b>farmer's carries</b> (just walk holding the DBs) is great for posture.</div>
-  <div class="tip">Tap any <b style="color:var(--rest)">rest</b> pill to start that timer, or use the bar below.</div>
 </div>
 
 <!-- Timer -->
@@ -275,6 +270,17 @@
   </div>
 </div>
 <button class="t-show" id="tShow" hidden>Rest timer ▴</button>
+
+<script>
+  document.querySelectorAll('.how-btn').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var how=this.closest('.head').parentElement.querySelector('.how');
+      var open=how.classList.toggle('open');
+      this.classList.toggle('open',open);
+      this.textContent=open?'Hide':'How?';
+    });
+  });
+</script>
 
 <script>
   document.querySelectorAll('.tab').forEach(function(t){
