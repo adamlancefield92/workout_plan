@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#16130F">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Home Split">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<title>Home Split</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --base:#16130F; --surface:#211C16; --ink:#F2EBE0;
+    --muted:#9B917F; --line:#3A3328;
+    --work:#E8A33D; --rest:#7BA892;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    background:var(--base);color:var(--ink);
+    font-family:"Inter",system-ui,sans-serif;line-height:1.4;
+    padding:14px 14px 88px;max-width:430px;margin:0 auto;
+    -webkit-font-smoothing:antialiased;transition:padding-bottom .2s ease;
+  }
+  body.timer-hidden{padding-bottom:18px}
+
+  header{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:10px}
+  h1{font-family:"Saira Condensed",sans-serif;font-weight:800;font-size:38px;line-height:.9;text-transform:uppercase;letter-spacing:-.01em}
+  .eyebrow{font-family:"Saira Condensed",sans-serif;font-weight:600;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--work);text-align:right}
+
+  .tabs{display:flex;gap:6px;margin-bottom:11px}
+  .tab{
+    flex:1;text-align:center;font-family:"Saira Condensed",sans-serif;
+    padding:9px 4px;border:1px solid var(--line);border-radius:10px;
+    color:var(--muted);background:var(--surface);font-weight:700;
+    text-transform:uppercase;letter-spacing:.08em;font-size:14px;cursor:pointer;
+    transition:all .15s ease;
+  }
+  .tab.active{background:var(--work);color:var(--base);border-color:var(--work)}
+  .tab:focus-visible{outline:2px solid var(--rest);outline-offset:2px}
+
+  .day{display:none}
+  .day.active{display:block}
+
+  .focus{font-family:"Saira Condensed",sans-serif;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+  .warm{font-size:12px;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:7px 10px;margin-bottom:10px}
+  .warm b{font-family:"Saira Condensed",sans-serif;color:var(--rest);text-transform:uppercase;letter-spacing:.1em;font-size:10.5px;font-weight:600}
+
+  .ex{display:grid;grid-template-columns:30px 1fr;gap:9px;background:var(--surface);border:1px solid var(--line);border-radius:11px;padding:9px 11px;margin-bottom:7px}
+  .node{width:30px;height:30px;border-radius:50%;border:2px solid var(--work);color:var(--work);display:flex;align-items:center;justify-content:center;font-family:"Saira Condensed",sans-serif;font-weight:700;font-size:15px}
+  .head{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+  .name{font-family:"Saira Condensed",sans-serif;font-weight:700;font-size:18px;text-transform:uppercase;line-height:1}
+  .kit{font-size:10.5px;color:var(--muted)}
+  .row{display:flex;align-items:baseline;gap:10px;margin:4px 0 2px;flex-wrap:wrap}
+  .reps{font-family:"Saira Condensed",sans-serif;font-weight:800;font-size:21px;line-height:1;font-variant-numeric:tabular-nums}
+  .reps small{font-size:11px;color:var(--muted);font-weight:600}
+  .rest{font-family:"Saira Condensed",sans-serif;font-size:11.5px;color:var(--rest);letter-spacing:.03em;border:1px solid transparent;border-radius:999px}
+  .rest[data-sec]{cursor:pointer;border-color:rgba(123,168,146,.4);padding:2px 9px}
+  .rest[data-sec]:active{background:rgba(123,168,146,.18)}
+  .wt{font-family:"Saira Condensed",sans-serif;font-size:11px;letter-spacing:.02em;color:var(--base);background:var(--work);border-radius:5px;padding:2px 7px;font-weight:600}
+  .wt.bw{background:transparent;color:var(--muted);border:1px solid var(--line)}
+  .cue{font-size:11.5px;color:var(--muted);margin-top:2px}
+  .cue b{color:var(--ink);font-weight:600}
+
+  .core{font-size:12.5px;color:var(--base);background:var(--rest);border:1px solid var(--rest);border-radius:10px;padding:8px 11px;margin-top:3px;font-weight:500}
+  .core b{font-family:"Saira Condensed",sans-serif;color:var(--base);text-transform:uppercase;letter-spacing:.1em;font-size:11px;font-weight:700}
+
+  .shared{margin-top:11px;display:grid;gap:7px}
+  .tip{font-size:11px;color:var(--muted);padding:8px 10px;border:1px dashed var(--line);border-radius:10px}
+  .tip b{color:var(--work);font-weight:600}
+
+  /* ---- Rest timer ---- */
+  .timer{
+    position:fixed;left:0;right:0;bottom:0;max-width:430px;margin:0 auto;
+    background:var(--surface);border-top:1px solid var(--line);
+    display:flex;align-items:center;gap:8px;padding:8px 10px 10px;
+    box-shadow:0 -10px 30px rgba(0,0,0,.4);z-index:50;
+    transition:transform .25s ease;
+  }
+  .timer.hidden{transform:translateY(110%)}
+  .t-count{
+    font-family:"Saira Condensed",sans-serif;font-weight:800;font-size:30px;
+    font-variant-numeric:tabular-nums;color:var(--work);min-width:64px;line-height:1;
+  }
+  .t-count.done{animation:flash .5s ease infinite}
+  @keyframes flash{50%{color:var(--rest)}}
+  .t-mid{display:flex;flex-direction:column;gap:5px;flex:1}
+  .t-presets{display:flex;gap:5px}
+  .t-presets button{
+    flex:1;font-family:"Saira Condensed",sans-serif;font-weight:700;font-size:12px;
+    background:transparent;color:var(--muted);border:1px solid var(--line);
+    border-radius:7px;padding:4px 0;cursor:pointer;letter-spacing:.04em;
+  }
+  .t-presets button.sel{background:var(--work);color:var(--base);border-color:var(--work)}
+  .t-controls{display:flex;gap:5px}
+  .t-controls button{
+    font-family:"Saira Condensed",sans-serif;font-weight:700;font-size:13px;
+    border-radius:8px;padding:7px 12px;cursor:pointer;border:1px solid var(--line);
+    text-transform:uppercase;letter-spacing:.05em;
+  }
+  #tStart{background:var(--rest);color:var(--base);border-color:var(--rest)}
+  #tStart.run{background:transparent;color:var(--rest)}
+  #tReset{background:transparent;color:var(--muted)}
+  .t-hide{
+    background:transparent;border:none;color:var(--muted);font-size:18px;
+    cursor:pointer;padding:0 2px;line-height:1;align-self:flex-start;
+  }
+  .t-show{
+    position:fixed;bottom:10px;left:50%;transform:translateX(-50%);z-index:50;
+    font-family:"Saira Condensed",sans-serif;font-weight:700;font-size:12px;
+    background:var(--work);color:var(--base);border:none;border-radius:999px;
+    padding:7px 16px;cursor:pointer;letter-spacing:.06em;text-transform:uppercase;
+    box-shadow:0 6px 18px rgba(0,0,0,.4);
+  }
+  .t-show[hidden]{display:none}
+  button:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Home Split</h1>
+  <div class="eyebrow">Strength &amp; Power<br>Fewer reps · real rest</div>
+</header>
+
+<div class="tabs">
+  <button class="tab active" data-day="legs">Legs</button>
+  <button class="tab" data-day="push">Push</button>
+  <button class="tab" data-day="pull">Pull</button>
+</div>
+
+<!-- LEGS -->
+<div class="day active" id="legs">
+  <div class="focus">Lower body · power → heavy → light · ~20 min</div>
+  <div class="warm"><b>Warm-up ·</b> 10 leg swings/leg · 15 slow squats · 10 walking lunges</div>
+
+  <div class="ex"><div class="node">1</div><div>
+    <div class="head"><span class="name">Squat Jumps</span><span class="kit">or fast stand-ups</span></div>
+    <div class="row"><span class="reps">4 × 5</span><span class="rest" data-sec="90">rest 60–90s</span><span class="wt bw">Bodyweight</span></div>
+    <div class="cue"><b>Power, done fresh:</b> explode up, soft landing, full reset each rep.</div></div></div>
+
+  <div class="ex"><div class="node">2</div><div>
+    <div class="head"><span class="name">Bulgarian Split Squats</span><span class="kit">rear foot raised</span></div>
+    <div class="row"><span class="reps">3 × 8 <small>/leg</small></span><span class="rest" data-sec="60">rest 60s</span><span class="wt">set 8–12kg</span></div>
+    <div class="cue"><b>3-sec descent</b>, shin vertical, weight in front heel.</div></div></div>
+
+  <div class="ex"><div class="node">3</div><div>
+    <div class="head"><span class="name">Romanian Deadlifts</span><span class="kit">dumbbells · heaviest</span></div>
+    <div class="row"><span class="reps">3 × 10</span><span class="rest" data-sec="60">rest 60s</span><span class="wt">bump to 10–16kg</span></div>
+    <div class="cue"><b>Hinge at hips</b>, push backside back, flat back. Only weight change of the day.</div></div></div>
+
+  <div class="ex"><div class="node">4</div><div>
+    <div class="head"><span class="name">Single-Leg Calf Raises</span><span class="kit">off a step</span></div>
+    <div class="row"><span class="reps">2 × 12 <small>/leg</small></span><span class="rest" data-sec="45">rest 45s</span><span class="wt bw">BW or hold 1 DB</span></div>
+    <div class="cue"><b>Full range</b>, hold wall for balance.</div></div></div>
+
+  <div class="ex"><div class="node">5</div><div>
+    <div class="head"><span class="name">Wall Sit</span><span class="kit">optional finisher</span></div>
+    <div class="row"><span class="reps">2 × 30–45<small>s</small></span><span class="wt bw">Bodyweight</span></div>
+    <div class="cue">The only <b>burn</b> bit — keep it short.</div></div></div>
+
+  <div class="core"><b>Core finisher · optional ·</b> Plank 2 × 30s · Dead bug 2 × 8/side. Brace as if bracing for a punch; don't let the lower back arch.</div>
+</div>
+
+<!-- PUSH -->
+<div class="day" id="push">
+  <div class="focus">Chest · shoulders · triceps · weight only goes down · ~20 min</div>
+  <div class="warm"><b>Warm-up ·</b> arm circles · 15 band pull-aparts · 10 slow push-ups</div>
+
+  <div class="ex"><div class="node">1</div><div>
+    <div class="head"><span class="name">Explosive Push-ups</span><span class="kit">push off the floor fast</span></div>
+    <div class="row"><span class="reps">4 × 5</span><span class="rest" data-sec="90">rest 60–90s</span><span class="wt bw">Bodyweight</span></div>
+    <div class="cue"><b>Power, done fresh:</b> drive up fast, control the way down. On knees if needed.</div></div></div>
+
+  <div class="ex"><div class="node">2</div><div>
+    <div class="head"><span class="name">DB Floor / Bench Press</span><span class="kit">main lift · heaviest</span></div>
+    <div class="row"><span class="reps">3 × 8</span><span class="rest" data-sec="60">rest 60s</span><span class="wt">set 12–20kg</span></div>
+    <div class="cue"><b>Control to chest</b>, drive up. Bench beats floor once you have one.</div></div></div>
+
+  <div class="ex"><div class="node">3</div><div>
+    <div class="head"><span class="name">DB Shoulder Press</span><span class="kit">standing or seated</span></div>
+    <div class="row"><span class="reps">3 × 8</span><span class="rest" data-sec="60">rest 60s</span><span class="wt">dial to 8–14kg</span></div>
+    <div class="cue">Press overhead, <b>ribs down</b>, don't arch the back.</div></div></div>
+
+  <div class="ex"><div class="node">4</div><div>
+    <div class="head"><span class="name">Overhead Triceps Ext.</span><span class="kit">one DB, both hands</span></div>
+    <div class="row"><span class="reps">2 × 12</span><span class="rest" data-sec="45">rest 45s</span><span class="wt">4–10kg</span></div>
+    <div class="cue"><b>Slow stretch</b> at the bottom, elbows pointing up.</div></div></div>
+
+  <div class="ex"><div class="node">5</div><div>
+    <div class="head"><span class="name">DB Lateral Raises</span><span class="kit">shoulder health · optional</span></div>
+    <div class="row"><span class="reps">2 × 15</span><span class="rest" data-sec="45">rest 45s</span><span class="wt">2–6kg light</span></div>
+    <div class="cue"><b>Lead with elbows</b>, slow, no swinging. Lightest move — comes last.</div></div></div>
+
+  <div class="core"><b>Core finisher · optional ·</b> Hollow hold 2 × 20s · Plank 2 × 30s. Press the lower back flat to the floor on the hollow hold.</div>
+</div>
+
+<!-- PULL -->
+<div class="day" id="pull">
+  <div class="focus">Back · rear delts · biceps · dumbbells first, then bands · ~20 min</div>
+  <div class="warm"><b>Warm-up ·</b> 15 band pull-aparts · arm swings · shoulder rolls</div>
+
+  <div class="ex"><div class="node">1</div><div>
+    <div class="head"><span class="name">Fast Dumbbell Rows</span><span class="kit">bent over, both arms</span></div>
+    <div class="row"><span class="reps">4 × 5</span><span class="rest" data-sec="90">rest 60–90s</span><span class="wt">set 10–16kg</span></div>
+    <div class="cue"><b>Power, done fresh:</b> pull fast to the ribs, control the lower.</div></div></div>
+
+  <div class="ex"><div class="node">2</div><div>
+    <div class="head"><span class="name">One-Arm DB Row</span><span class="kit">hand on chair · heaviest</span></div>
+    <div class="row"><span class="reps">3 × 8 <small>/arm</small></span><span class="rest" data-sec="60">rest 60s</span><span class="wt">bump to 14–24kg</span></div>
+    <div class="cue">Main <b>horizontal pull</b> — your strongest. Pull to the hip, flat back. Then set the DBs down.</div></div></div>
+
+  <div class="ex"><div class="node">3</div><div>
+    <div class="head"><span class="name">Banded Lat Pulldown</span><span class="kit">band + door anchor, kneeling</span></div>
+    <div class="row"><span class="reps">3 × 12</span><span class="rest" data-sec="60">rest 60s</span><span class="wt bw">Band</span></div>
+    <div class="cue"><b>Vertical pull</b> — pull elbows down to your ribs, control the stretch up.</div></div></div>
+
+  <div class="ex"><div class="node">4</div><div>
+    <div class="head"><span class="name">Band Face Pulls</span><span class="kit">posture &amp; rear delts</span></div>
+    <div class="row"><span class="reps">2 × 15</span><span class="rest" data-sec="45">rest 45s</span><span class="wt bw">Band</span></div>
+    <div class="cue"><b>Pull to your face, elbows high.</b> The best move here for rounded shoulders.</div></div></div>
+
+  <div class="ex"><div class="node">5</div><div>
+    <div class="head"><span class="name">Dumbbell Curls</span><span class="kit">optional finisher</span></div>
+    <div class="row"><span class="reps">2 × 12</span><span class="wt">4–10kg</span></div>
+    <div class="cue">Slow, <b>no swinging</b> — keep the elbows still. Grab the DBs again only if you fancy it.</div></div></div>
+
+  <div class="core"><b>Core finisher · optional ·</b> Bird-dog 2 × 8/side · Side plank 2 × 20s/side. Slow and controlled — this one's all posture.</div>
+</div>
+
+<div class="shared">
+  <div class="tip"><b>Built for fewer weight changes:</b> each day flows power → heaviest lift → lighter/band work, so the dumbbell only changes 2–3 times and never jumps back up. On pull day all the dumbbell work is done first, then you set them down for the bands.</div>
+  <div class="tip"><b>First 2–3 weeks:</b> 2 sets only, leave reps in the tank, don't hit failure. Build to full sets once soreness fades. Intensity (close-ish to failure) matters more than piling on sets.</div>
+  <div class="tip"><b>Picking a weight:</b> last 2 reps should be hard but your form holds. When the top of the rep range feels easy, slow the tempo &amp; add a pause before going heavier. (Weights shown are targets to grow into — start lighter.)</div>
+  <div class="tip"><b>Weekly shape:</b> Legs · Push · Pull · rest, once or twice through per week. Add <b>2–3 easy cardio sessions</b> — 30–40 min where you can talk but not sing — on off days. Optional extra: a minute of <b>farmer's carries</b> (just walk holding the DBs) is great for posture.</div>
+  <div class="tip">Tap any <b style="color:var(--rest)">rest</b> pill to start that timer, or use the bar below.</div>
+</div>
+
+<!-- Timer -->
+<div class="timer" id="timer">
+  <button class="t-hide" id="tHide" aria-label="Hide timer">▾</button>
+  <div class="t-count" id="tCount">1:00</div>
+  <div class="t-mid">
+    <div class="t-presets">
+      <button data-sec="45">45s</button>
+      <button data-sec="60" class="sel">60s</button>
+      <button data-sec="90">90s</button>
+    </div>
+    <div class="t-controls">
+      <button id="tStart">Start</button>
+      <button id="tReset">Reset</button>
+    </div>
+  </div>
+</div>
+<button class="t-show" id="tShow" hidden>Rest timer ▴</button>
+
+<script>
+  document.querySelectorAll('.tab').forEach(function(t){
+    t.addEventListener('click',function(){
+      document.querySelectorAll('.tab').forEach(function(x){x.classList.remove('active')});
+      document.querySelectorAll('.day').forEach(function(d){d.classList.remove('active')});
+      this.classList.add('active');
+      document.getElementById(this.dataset.day).classList.add('active');
+      window.scrollTo(0,0);
+    });
+  });
+</script>
+
+<script>
+(function(){
+  var total=60, remaining=60, running=false, ticker=null;
+  var countEl=document.getElementById('tCount');
+  var startBtn=document.getElementById('tStart');
+  var resetBtn=document.getElementById('tReset');
+  var presets=document.querySelectorAll('.t-presets button');
+  var timerEl=document.getElementById('timer');
+  var hideBtn=document.getElementById('tHide');
+  var showBtn=document.getElementById('tShow');
+
+  function fmt(s){var m=Math.floor(s/60);var ss=s%60;return m+':'+(ss<10?'0':'')+ss;}
+  function render(){countEl.textContent=fmt(remaining);}
+
+  function beep(){
+    try{
+      var ctx=new (window.AudioContext||window.webkitAudioContext)();
+      [0,0.18,0.36].forEach(function(t){
+        var o=ctx.createOscillator(),g=ctx.createGain();
+        o.connect(g);g.connect(ctx.destination);
+        o.type='sine';o.frequency.value=880;
+        g.gain.setValueAtTime(0.0001,ctx.currentTime+t);
+        g.gain.exponentialRampToValueAtTime(0.25,ctx.currentTime+t+0.01);
+        g.gain.exponentialRampToValueAtTime(0.0001,ctx.currentTime+t+0.14);
+        o.start(ctx.currentTime+t);o.stop(ctx.currentTime+t+0.15);
+      });
+    }catch(e){}
+    if(navigator.vibrate){navigator.vibrate([200,90,200]);}
+  }
+
+  function stop(){running=false;clearInterval(ticker);startBtn.textContent='Start';startBtn.classList.remove('run');}
+  function finish(){stop();countEl.classList.add('done');beep();
+    setTimeout(function(){countEl.classList.remove('done');remaining=total;render();},2500);}
+
+  function start(){
+    if(running)return;
+    if(remaining<=0){remaining=total;}
+    running=true;startBtn.textContent='Pause';startBtn.classList.add('run');
+    countEl.classList.remove('done');
+    ticker=setInterval(function(){
+      remaining--;render();
+      if(remaining<=0){finish();}
+    },1000);
+  }
+
+  startBtn.addEventListener('click',function(){running?stop():start();});
+  resetBtn.addEventListener('click',function(){stop();remaining=total;countEl.classList.remove('done');render();});
+
+  function setTime(sec,startNow){
+    total=sec;remaining=sec;
+    presets.forEach(function(b){b.classList.toggle('sel',+b.dataset.sec===sec);});
+    countEl.classList.remove('done');render();
+    if(startNow){stop();start();}
+  }
+  presets.forEach(function(b){b.addEventListener('click',function(){setTime(+b.dataset.sec,false);});});
+
+  document.querySelectorAll('.rest[data-sec]').forEach(function(p){
+    p.addEventListener('click',function(){
+      if(timerEl.classList.contains('hidden')){timerEl.classList.remove('hidden');showBtn.hidden=true;document.body.classList.remove('timer-hidden');}
+      setTime(+p.dataset.sec,true);
+    });
+  });
+
+  hideBtn.addEventListener('click',function(){timerEl.classList.add('hidden');showBtn.hidden=false;document.body.classList.add('timer-hidden');stop();});
+  showBtn.addEventListener('click',function(){timerEl.classList.remove('hidden');showBtn.hidden=true;document.body.classList.remove('timer-hidden');});
+
+  render();
+})();
+</script>
+
+</body>
+</html>
