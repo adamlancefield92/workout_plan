@@ -34,12 +34,12 @@
   h1{font-family:"Saira Condensed",sans-serif;font-weight:800;font-size:38px;line-height:.9;text-transform:uppercase;letter-spacing:-.01em}
   .eyebrow{font-family:"Saira Condensed",sans-serif;font-weight:600;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--work);text-align:right}
 
-  .tabs{display:flex;gap:6px;margin-bottom:11px}
+  .tabs{display:flex;gap:5px;margin-bottom:11px}
   .tab{
     flex:1;text-align:center;font-family:"Saira Condensed",sans-serif;
-    padding:9px 4px;border:1px solid var(--line);border-radius:10px;
+    padding:9px 2px;border:1px solid var(--line);border-radius:10px;
     color:var(--muted);background:var(--surface);font-weight:700;
-    text-transform:uppercase;letter-spacing:.08em;font-size:14px;cursor:pointer;
+    text-transform:uppercase;letter-spacing:.06em;font-size:12px;cursor:pointer;
     transition:all .15s ease;
   }
   .tab.active{background:var(--work);color:var(--base);border-color:var(--work)}
@@ -74,6 +74,8 @@
 
   .core{font-size:12.5px;color:var(--base);background:var(--rest);border:1px solid var(--rest);border-radius:10px;padding:8px 11px;margin-top:3px;font-weight:500}
   .core b{font-family:"Saira Condensed",sans-serif;color:var(--base);text-transform:uppercase;letter-spacing:.1em;font-size:11px;font-weight:700}
+  .core.warn{background:#8B3A3A;border-color:#8B3A3A;color:#F2EBE0}
+  .core.warn b{color:#F2EBE0}
 
   .shared{margin-top:11px;display:grid;gap:7px}
   .tip{font-size:11px;color:var(--muted);padding:8px 10px;border:1px dashed var(--line);border-radius:10px}
@@ -137,6 +139,7 @@
   <button class="tab active" data-day="legs">Legs</button>
   <button class="tab" data-day="push">Push</button>
   <button class="tab" data-day="pull">Pull</button>
+  <button class="tab" data-day="back">Back</button>
 </div>
 
 <!-- LEGS -->
@@ -159,8 +162,8 @@
   <div class="ex"><div class="node">3</div><div>
     <div class="head"><span class="name">Romanian Deadlifts</span><span class="kit">dumbbells · heaviest</span><button class="how-btn">How?</button></div>
     <div class="row"><span class="reps">3 × 10</span><span class="rest" data-sec="60">rest 60s</span><span class="wt">bump to 10–16kg</span></div>
-    <div class="cue"><b>Hinge at hips</b>, push backside back, flat back. Only weight change of the day.</div>
-    <div class="how">Hold DBs in front of your thighs. Push your hips back and hinge forward, lowering the DBs down your legs with a flat back — stop when you feel a hamstring stretch. Drive hips forward to stand, squeeze glutes at the top.</div></div></div>
+    <div class="cue"><b>Flat back always — never round the spine.</b> Push your backside back, hinge at the hips, soft knees. Go light while your back settles and master the hinge first (see the Back tab).</div>
+    <div class="how">Hold DBs in front of your thighs. Push your hips back and hinge forward with a flat back — stop when you feel a hamstring stretch. Drive hips forward to stand, squeeze glutes at the top. If the lower back feels it at all, go lighter.</div></div></div>
 
   <div class="ex"><div class="node">4</div><div>
     <div class="head"><span class="name">Single-Leg Calf Raises</span><span class="kit">off a step</span><button class="how-btn">How?</button></div>
@@ -179,40 +182,46 @@
 
 <!-- PUSH -->
 <div class="day" id="push">
-  <div class="focus">Chest · shoulders · triceps · weight only goes down · ~20 min</div>
+  <div class="focus">Chest · arms · back-safe · weight only goes down · ~20 min</div>
   <div class="warm"><b>Warm-up ·</b> arm circles · 15 band pull-aparts · 10 slow push-ups</div>
 
   <div class="ex"><div class="node">1</div><div>
     <div class="head"><span class="name">Explosive Push-ups</span><span class="kit">push off the floor fast</span><button class="how-btn">How?</button></div>
     <div class="row"><span class="reps">4 × 5</span><span class="rest" data-sec="90">rest 60–90s</span><span class="wt bw">Bodyweight</span></div>
-    <div class="cue"><b>Power, done fresh:</b> drive up fast, control the way down. On knees if needed.</div>
-    <div class="how">Standard push-up position, hands just wider than shoulders. Lower chest to the floor with control, then drive up as fast as possible. Let your hands leave the floor at the top. Fully reset between reps.</div></div></div>
+    <div class="cue"><b>Power, done fresh:</b> hold a rigid plank, hips up, don't let the lower back sag. Knees down if needed.</div>
+    <div class="how">Hands just wider than shoulders, body in a straight line from head to heels. Lower chest to the floor with control, then drive up as fast as possible — hands can leave the floor. Reset fully between reps.</div></div></div>
 
   <div class="ex"><div class="node">2</div><div>
     <div class="head"><span class="name">DB Floor / Bench Press</span><span class="kit">main lift · heaviest</span><button class="how-btn">How?</button></div>
     <div class="row"><span class="reps">3 × 8</span><span class="rest" data-sec="60">rest 60s</span><span class="wt">set 12–20kg</span></div>
-    <div class="cue"><b>Control to chest</b>, drive up. Bench beats floor once you have one.</div>
+    <div class="cue"><b>Control to chest</b>, drive up. Lying down keeps the back supported.</div>
     <div class="how">Lie on your back (on floor or bench), DBs at chest height with elbows at roughly 45°. Press up until arms are extended, then lower slowly back until DBs touch your chest.</div></div></div>
 
   <div class="ex"><div class="node">3</div><div>
-    <div class="head"><span class="name">DB Shoulder Press</span><span class="kit">standing or seated</span><button class="how-btn">How?</button></div>
+    <div class="head"><span class="name">DB Seated Shoulder Press</span><span class="kit">back against wall or bench</span><button class="how-btn">How?</button></div>
     <div class="row"><span class="reps">3 × 8</span><span class="rest" data-sec="60">rest 60s</span><span class="wt">dial to 8–14kg</span></div>
-    <div class="cue">Press overhead, <b>ribs down</b>, don't arch the back.</div>
-    <div class="how">Hold DBs at shoulder height, palms facing forward. Brace your core and press straight overhead until arms are extended. Lower back to shoulders with control — don't let your lower back arch.</div></div></div>
+    <div class="cue">Sit with your back <b>fully supported</b> against a wall or bench — removes the lower-back arch entirely. Ribs down, press straight up.</div>
+    <div class="how">Sit on a chair or the floor with your back flat against a wall. Hold DBs at shoulder height, palms forward. Brace your core and press straight overhead. Lower back to shoulders with control — the wall support means no lumbar arch.</div></div></div>
 
   <div class="ex"><div class="node">4</div><div>
-    <div class="head"><span class="name">Overhead Triceps Ext.</span><span class="kit">one DB, both hands</span><button class="how-btn">How?</button></div>
-    <div class="row"><span class="reps">2 × 12</span><span class="rest" data-sec="45">rest 45s</span><span class="wt">4–10kg</span></div>
-    <div class="cue"><b>Slow stretch</b> at the bottom, elbows pointing up.</div>
-    <div class="how">Hold one DB with both hands, arms extended overhead. Bend only at the elbows to lower the DB behind your head, keeping elbows pointing straight up. Extend back to the top.</div></div></div>
+    <div class="head"><span class="name">DB Floor Fly</span><span class="kit">lying · chest stretch</span><button class="how-btn">How?</button></div>
+    <div class="row"><span class="reps">3 × 10</span><span class="rest" data-sec="60">rest 60s</span><span class="wt">4–10kg</span></div>
+    <div class="cue">Soft elbows, open wide for a <b>chest stretch</b>, squeeze back together. Back stays flat on the floor.</div>
+    <div class="how">Lie on your back, DBs above your chest with a slight bend in the elbows. Open arms wide and lower until you feel a stretch across the chest, then squeeze the chest to bring them back together. Do not let the lower back arch off the floor.</div></div></div>
 
   <div class="ex"><div class="node">5</div><div>
-    <div class="head"><span class="name">DB Lateral Raises</span><span class="kit">shoulder health · optional</span><button class="how-btn">How?</button></div>
+    <div class="head"><span class="name">Lying Triceps Extension</span><span class="kit">floor · elbows up</span><button class="how-btn">How?</button></div>
+    <div class="row"><span class="reps">3 × 10</span><span class="rest" data-sec="45">rest 45s</span><span class="wt">4–10kg</span></div>
+    <div class="cue">Elbows pointing straight up, lower toward your <b>forehead</b>, extend. Back stays flat on the floor.</div>
+    <div class="how">Lie on the floor, DBs held above your forehead with elbows pointing up. Bend only at the elbows to lower the DBs toward your forehead, then extend back up. Keep the upper arms still and the lower back pressed flat throughout.</div></div></div>
+
+  <div class="ex"><div class="node">6</div><div>
+    <div class="head"><span class="name">DB Lateral Raises</span><span class="kit">shoulder finisher · optional</span><button class="how-btn">How?</button></div>
     <div class="row"><span class="reps">2 × 15</span><span class="rest" data-sec="45">rest 45s</span><span class="wt">2–6kg light</span></div>
-    <div class="cue"><b>Lead with elbows</b>, slow, no swinging. Lightest move — comes last.</div>
+    <div class="cue"><b>Lead with elbows</b>, slow, no swinging. Trim this first if short on time.</div>
     <div class="how">Hold DBs at your sides with a slight bend in the elbows. Raise both arms out to the sides to shoulder height, leading with your elbows. Lower slowly — use a very light weight and avoid shrugging or swinging.</div></div></div>
 
-  <div class="core"><b>Core finisher · optional ·</b> Hollow hold 2 × 20s · Plank 2 × 30s. Press the lower back flat to the floor on the hollow hold.</div>
+  <div class="core"><b>Core finisher · optional ·</b> Dead bug 2 × 8/side · Plank 2 × 30s. Press the lower back flat to the floor on the dead bug.</div>
 </div>
 
 <!-- PULL -->
@@ -221,10 +230,10 @@
   <div class="warm"><b>Warm-up ·</b> 15 band pull-aparts · arm swings · shoulder rolls</div>
 
   <div class="ex"><div class="node">1</div><div>
-    <div class="head"><span class="name">Fast Dumbbell Rows</span><span class="kit">bent over, both arms</span><button class="how-btn">How?</button></div>
+    <div class="head"><span class="name">Fast Dumbbell Rows</span><span class="kit">chest on sofa back or braced hinge</span><button class="how-btn">How?</button></div>
     <div class="row"><span class="reps">4 × 5</span><span class="rest" data-sec="90">rest 60–90s</span><span class="wt">set 10–16kg</span></div>
-    <div class="cue"><b>Power, done fresh:</b> pull fast to the ribs, control the lower.</div>
-    <div class="how">Hinge forward at the hips, back flat and parallel to the floor, DBs hanging straight down. Pull both DBs up to your ribs as fast as possible, then lower with control. Keep your core braced throughout.</div></div></div>
+    <div class="cue"><b>Back-safe default:</b> rest your chest on the back of a sofa to support the spine, or hinge with a hard-braced flat back. Start light. Pull fast to the ribs, control the lower.</div>
+    <div class="how">Option A (safest): drape your chest over the back of a sofa, arms hanging down, and row both DBs up to your ribs fast. Option B: hinge forward with knees soft and back locked flat, brace hard, then pull. Never round the lower back.</div></div></div>
 
   <div class="ex"><div class="node">2</div><div>
     <div class="head"><span class="name">One-Arm DB Row</span><span class="kit">hand on chair · heaviest</span><button class="how-btn">How?</button></div>
@@ -251,6 +260,54 @@
     <div class="how">Hold DBs at your sides, palms facing forward. Curl both up by bending at the elbows, keeping your upper arms pinned to your sides. Lower slowly back to the start.</div></div></div>
 
   <div class="core"><b>Core finisher · optional ·</b> Bird-dog 2 × 8/side · Side plank 2 × 20s/side. Slow and controlled — this one's all posture.</div>
+</div>
+
+<!-- BACK -->
+<div class="day" id="back">
+  <div class="focus">Gentle off-day · spine &amp; hinge · all bodyweight · ~8 min</div>
+  <div class="warm"><b>Note ·</b> Safe to do daily. Move slowly — this is mobility and motor control, not a workout.</div>
+
+  <div class="ex"><div class="node">1</div><div>
+    <div class="head"><span class="name">Cat-Cow</span><span class="kit">spine mobilisation</span><button class="how-btn">How?</button></div>
+    <div class="row"><span class="reps">8 <small>slow</small></span></div>
+    <div class="cue">Move through the <b>full range</b> of the spine — don't rush.</div>
+    <div class="how">On hands and knees. Inhale and let the belly drop (cow — arch the back). Exhale and round the spine up toward the ceiling (cat). Move slowly and breathe through each rep.</div></div></div>
+
+  <div class="ex"><div class="node">2</div><div>
+    <div class="head"><span class="name">Glute Bridge</span><span class="kit">floor · hips up</span><button class="how-btn">How?</button></div>
+    <div class="row"><span class="reps">2 × 12</span></div>
+    <div class="cue"><b>Squeeze the glutes</b> to lift, not the lower back. You can add a DB on the hips later.</div>
+    <div class="how">Lie on your back, knees bent, feet flat. Push through your heels and squeeze your glutes to lift your hips until your body forms a straight line from shoulders to knees. Lower slowly. Do not hyperextend at the top.</div></div></div>
+
+  <div class="ex"><div class="node">3</div><div>
+    <div class="head"><span class="name">Bird-Dog</span><span class="kit">opposite arm + leg</span><button class="how-btn">How?</button></div>
+    <div class="row"><span class="reps">2 × 8 <small>/side</small></span></div>
+    <div class="cue">Keep your <b>hips level</b> — don't let them rotate or drop.</div>
+    <div class="how">On hands and knees, spine neutral. Extend one arm forward and the opposite leg back at the same time, hold for 2 seconds, then return. Switch sides. Move slowly and brace the core throughout.</div></div></div>
+
+  <div class="ex"><div class="node">4</div><div>
+    <div class="head"><span class="name">Side Plank</span><span class="kit">hips off the floor</span><button class="how-btn">How?</button></div>
+    <div class="row"><span class="reps">2 × 20<small>s /side</small></span></div>
+    <div class="cue">Lift hips to a <b>straight line</b>. Drop to knees if needed — quality over duration.</div>
+    <div class="how">Lie on your side, forearm on the floor, elbow under the shoulder. Lift your hips so your body forms a straight line from head to feet (or knees). Hold steady. Switch sides.</div></div></div>
+
+  <div class="ex"><div class="node">5</div><div>
+    <div class="head"><span class="name">Curl-Up (McGill)</span><span class="kit">hands under lower back</span><button class="how-btn">How?</button></div>
+    <div class="row"><span class="reps">2 × 6</span></div>
+    <div class="cue">Lift head and shoulders <b>just slightly</b> — the back stays completely still.</div>
+    <div class="how">Lie on your back, one knee bent, one leg flat. Slide your hands under the curve of your lower back to preserve its natural arch. Brace your core and lift your head and shoulders just a few centimetres — no more. Hold 8–10 seconds, lower. The lower back must not move at all.</div></div></div>
+
+  <div class="ex"><div class="node">6</div><div>
+    <div class="head"><span class="name">Hip Hinge Practice</span><span class="kit">broomstick drill</span><button class="how-btn">How?</button></div>
+    <div class="row"><span class="reps">2 × 8</span></div>
+    <div class="cue">Hold a broomstick touching <b>head, mid-back &amp; tailbone</b>. Push hips back, soft knees, all three points stay touching — this grooves the RDL pattern.</div>
+    <div class="how">Stand holding a broomstick or long pole vertically along your spine with one hand at your neck and one at your lower back. Push your hips back and hinge forward, keeping the stick touching your head, the middle of your back, and your tailbone throughout. Stop when the stick loses contact or you feel a hamstring stretch. Stand back up by driving the hips forward.</div></div></div>
+
+  <div class="core warn"><b>Important ·</b> Because back niggles recur, a single physio check-up is worth more than any routine here. Stop any exercise immediately if it pinches, causes sharp pain, or sends pain down a leg — and see a professional before continuing.</div>
+
+  <div class="shared" style="margin-top:10px">
+    <div class="tip"><b>Weekly shape:</b> Legs · Push · Pull · rest, once or twice through per week. This Back tab is gentle enough to do daily on rest days. For cardio, keep the easy dog walks and add a couple of hard 20s–1 min bursts (hill or stair sprints) for VO2max.</div>
+  </div>
 </div>
 
 <!-- Timer -->
