@@ -81,6 +81,19 @@
   .tip{font-size:11px;color:var(--muted);padding:8px 10px;border:1px dashed var(--line);border-radius:10px}
   .tip b{color:var(--work);font-weight:600}
 
+  .posture{font-size:11.5px;color:var(--ink);background:rgba(123,168,146,.12);border:1px solid rgba(123,168,146,.45);border-radius:10px;padding:7px 10px;margin-bottom:10px}
+  .posture b{font-family:"Saira Condensed",sans-serif;color:var(--rest);text-transform:uppercase;letter-spacing:.1em;font-size:10.5px;font-weight:700}
+
+  .note-collapse{margin-top:10px}
+  .note-collapse>summary{cursor:pointer;list-style:none;font-family:"Saira Condensed",sans-serif;font-weight:700;font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:8px 10px}
+  .note-collapse>summary::-webkit-details-marker{display:none}
+  .note-collapse>summary::after{content:'+';float:right;font-weight:700}
+  .note-collapse[open]>summary::after{content:'–'}
+  .note-collapse[open]>summary{border-bottom-left-radius:0;border-bottom-right-radius:0;border-bottom:none}
+  .note-collapse .tip{border-style:solid;border-top:none;border-top-left-radius:0;border-top-right-radius:0;line-height:1.55}
+  .note-collapse .tip b{color:var(--ink)}
+  .note-collapse .tip strong{display:block;color:var(--rest);font-family:"Saira Condensed",sans-serif;text-transform:uppercase;letter-spacing:.06em;font-size:10.5px;font-weight:700;margin:9px 0 3px}
+
   /* ---- Rest timer ---- */
   .timer{
     position:fixed;left:0;right:0;bottom:0;max-width:430px;margin:0 auto;
@@ -276,6 +289,7 @@
 
 <!-- BACK -->
 <div class="day" id="back">
+  <div class="posture"><b>Standing default ·</b> ribs down · pelvis tucked a touch · weight even through both feet.</div>
   <div class="focus">Gentle off-day · spine &amp; hinge · all bodyweight · ~8 min</div>
   <div class="warm"><b>Note ·</b> Safe to do daily. Move slowly — this is mobility and motor control, not a workout.</div>
 
@@ -320,6 +334,60 @@
   <div class="shared" style="margin-top:10px">
     <div class="tip"><b>Weekly shape:</b> Legs · Push · Pull · rest, once or twice through per week. This Back tab is gentle enough to do daily on rest days. For cardio, keep the easy dog walks and add a couple of hard 20s–1 min bursts (hill or stair sprints) for VO2max.</div>
   </div>
+
+  <div class="focus" style="margin-top:18px">Hip Mobility &amp; Glute Activation</div>
+  <div class="shared" style="margin-top:0"><div class="tip">Undoes the sitting legacy — releases tight hip flexors, wakes up lazy glutes. Do on off-days or as a warm-up before Legs. <b>Stretch first, then activate.</b></div></div>
+
+  <div class="ex"><div class="node">1</div><div>
+    <div class="head"><span class="name">Half-kneeling Hip Flexor Stretch</span><span class="kit">front of hip · kneeling</span><button class="how-btn">How?</button></div>
+    <div class="row"><span class="reps">30–40<small>s /side</small></span><span class="rest" data-sec="35">hold 35s</span></div>
+    <div class="cue"><b>Squeeze the back glute and tuck your pelvis under BEFORE you lean in.</b> Lean forward only slightly. Feel it at the front of the kneeling-leg hip, never in your lower back.</div>
+    <div class="how">Kneel on one knee with the other foot flat in front, both knees about 90°. Before moving, squeeze the glute of the kneeling leg and tuck your pelvis under so the lower back flattens. Holding that, shift your weight forward only slightly until you feel a stretch at the front of the kneeling-leg hip. Breathe, hold, then switch sides. Never arch the lower back to chase a bigger stretch.</div></div></div>
+
+  <div class="ex"><div class="node">2</div><div>
+    <div class="head"><span class="name">Clamshells</span><span class="kit">side glute · glute med</span><button class="how-btn">How?</button></div>
+    <div class="row"><span class="reps">12–15 <small>/side</small></span></div>
+    <div class="cue">On your side, knees bent and stacked, heels together. <b>Lift the top knee without rolling your hips back.</b> Targets the side glute (glute medius).</div>
+    <div class="how">Lie on your side with hips and shoulders stacked, knees bent about 90° and heels together. Keeping your feet touching and your top hip pointing forward — don't let the pelvis roll back — lift the top knee as far as you can. Lower with control. Keep the movement at the hip, felt in the side of the glute.</div></div></div>
+
+  <div class="ex"><div class="node">3</div><div>
+    <div class="head"><span class="name">Glute Bridge — Activation Hold</span><span class="kit">glutes fire · 3s holds</span><button class="how-btn">How?</button></div>
+    <div class="row"><span class="reps">10 <small>slow · 3s hold</small></span></div>
+    <div class="cue"><b>3-second hold at the top with a hard glute squeeze.</b> Keep ribs down — don't arch into it. Trains the glutes to FIRE, which holds the pelvis neutral.</div>
+    <div class="how">Lie on your back, knees bent, feet flat. Squeeze your glutes to lift your hips into a straight line from shoulders to knees, then hold for 3 seconds with a hard glute squeeze. Keep your ribs pulled down and the lower back flat — don't arch into the top. Lower slowly. This is about the glutes firing, not speed.</div></div></div>
+
+  <div class="ex"><div class="node">4</div><div>
+    <div class="head"><span class="name">Standing Pelvic Tilt</span><span class="kit">wall drill · neutral</span><button class="how-btn">How?</button></div>
+    <div class="row"><span class="reps">10 <small>· 3s hold</small></span></div>
+    <div class="cue">Stand against a wall. <b>Gently flatten your lower back toward the wall by tucking the pelvis.</b> Hold 3s, release. This rehearses your neutral standing default.</div>
+    <div class="how">Stand with your back against a wall, feet a little forward and knees soft. Gently tilt your pelvis to flatten your lower back toward the wall — a small tuck, without pushing through your legs. Hold 3 seconds, then release back to neutral. This grooves the neutral pelvis position so it becomes your standing default.</div></div></div>
+
+  <div class="core warn"><b>Back-safe guardrails ·</b> The glute squeeze on the hip flexor stretch is non-negotiable — it keeps the stretch off your lower spine. Never force it by arching. Keep ribs down on the bridge. If anything pinches the lower back, ease off.</div>
+
+  <details class="note-collapse">
+    <summary>Why I'm doing this — tummy notes</summary>
+    <div class="tip">
+      <b>Tummy distension — what it is and the plan</b><br><br>
+      <strong>Diagnosis</strong>
+      • Not fat (lean at 15–16%; cutting would cost muscle, won't fix shape).<br>
+      • Not a weak/damaged core (it braces flat on an empty stomach — structure works).<br>
+      • Two layers: a posture/habit baseline (sitting legacy, likely some anterior pelvic tilt, tied to the lower-back issue) + a fermentation layer from a very high-fibre gut (~71g/day).
+      <strong>Posture/core (the trainable bit)</strong>
+      • It's a habit gap, not a strength gap — making the conscious brace into the resting default. Resting won't be as flat as a full brace, but most of the way.<br>
+      • Standing desk + no sofa already removed the daily driver — head start.<br>
+      • Use the Back-tab moves for bracing QUALITY (slow, ribs down, hard exhale, pelvis neutral), not reps. Plus the new hip-flexor/glute work above.<br>
+      • Timeline: 2–4 wks brain/habit side, 6–12 wks resting shape shifts, 3–6 months structural. Consistency-driven — frequent small posture catches beat one session.
+      <strong>Food tweaks (ease the ferment load, don't slash it)</strong>
+      • Black beans are the steady culprit — blending doesn't reduce the GOS. Rinse tinned beans hard, or test swapping for lentils/tofu for a week.<br>
+      • Lean on low-ferment frozen veg: green beans, spinach, kale, peppers, carrots, courgette, butternut. Go easy on: broccoli, cauliflower, sprouts, cabbage, leek, onion.<br>
+      • BeanAssist (alpha-galactosidase, vegan) with the bean lunch or a brassica-heavy dinner — not daily.
+      <strong>Bonus from the food diary</strong>
+      • Protein back-loaded (28g breakfast). Swap breakfast oat milk → soya: +~12g protein and removes a gas source.<br>
+      • Ignore the app's "−1433 to eat" — it's set to weight loss. Reset to maintain.
+      <strong>GP mention (no urgency)</strong>
+      • If all-day distension never eases and you want simple intolerances ruled out.
+    </div>
+  </details>
 </div>
 
 <!-- Timer -->
